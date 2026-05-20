@@ -22,20 +22,22 @@ while game_is_on:
     time.sleep(0.1)
     screen.update()
     snake.move()
-    #collision 
+        #collision 
     if snake.head.distance(food)<15:
         food.penup
         food.refresh()
         scoreboard.add()
         snake.add_new_body()
     if snake.head.xcor()>285 or snake.head.xcor()<-285 or snake.head.ycor()>285 or snake.head.ycor()<-285:
-        scoreboard.end()
-        break
-    for snakes in snake.turtles:
-        if snakes==snake.head:
-            pass
-        elif snake.head.distance(snakes)<10:
-            scoreboard.end()
+        scoreboard.reset()
+        snake.reset()
+
+for snakes in snake.turtles:
+    if snakes == snake.head:
+        pass
+    elif snake.head.distance(snakes) < 10:
+        scoreboard.reset()
+        snake.reset()
 
 
 
